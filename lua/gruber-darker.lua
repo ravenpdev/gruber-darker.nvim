@@ -290,10 +290,10 @@ function M.load()
 
 	highlight("@keyword", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.function", { fg = colors.yellow, bold = true }, config)
-	highlight("@keyword.operator", { fg = colors.yellow }, config)
+	highlight("@keyword.operator", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.return", { fg = colors.yellow }, config)
-	highlight("@keyword.conditional", { fg = colors.yellow }, config)
-	highlight("@keyword.repeat", { fg = colors.yellow }, config)
+	highlight("@keyword.conditional", { fg = colors.yellow, bold = true }, config)
+	highlight("@keyword.repeat", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.import", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.exception", { fg = colors.yellow }, config)
 
@@ -343,11 +343,6 @@ function M.load()
 	highlight("DiagnosticUnderlineInfo", { sp = colors.info, undercurl = true }, config)
 	highlight("DiagnosticUnderlineHint", { sp = colors.hint, undercurl = true }, config)
 	highlight("DiagnosticUnnecessary", { fg = colors.blue_dark, sp = colors.warning, undercurl = true }, config)
-
-	-- Git highlights (for gitsigns.nvim)
-	highlight("GitSignsAdd", { fg = colors.git_add }, config)
-	highlight("GitSignsChange", { fg = colors.git_change }, config)
-	highlight("GitSignsDelete", { fg = colors.git_delete }, config)
 
 	-- Notify
 	highlight("NotifyERRORBorder", { fg = colors.error }, config)
