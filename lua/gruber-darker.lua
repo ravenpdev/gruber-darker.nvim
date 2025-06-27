@@ -10,7 +10,7 @@ local default_config = {
 		folds = false,
 	},
 	underline = true,
-	undercurl = true,
+	underdotted = true,
 	transparent = false,
 	inverse = true,
 	dim_inactive = false,
@@ -107,8 +107,8 @@ local function highlight(group, opts, config_opts)
 	if opts.underline and config_opts.underline then
 		hl.underline = true
 	end
-	if opts.undercurl and config_opts.undercurl then
-		hl.undercurl = true
+	if opts.underdotted and config_opts.underdotted then
+		hl.underdotted = true
 	end
 	if opts.reverse and config_opts.inverse then
 		hl.reverse = true
@@ -146,7 +146,7 @@ function M.load()
 	}, config)
 	highlight("FloatBorder", { fg = colors.fg_dark, bg = colors.bg_light }, config)
 	highlight("Cursor", { fg = colors.bg, bg = colors.cursor }, config)
-	highlight("CursorLine", { bg = colors.bg_light }, config)
+	highlight("CursorLine", { bg = colors.bg }, config)
 	highlight("CursorColumn", { bg = colors.bg_light }, config)
 	highlight("ColorColumn", { bg = colors.bg_light }, config)
 	highlight("LineNr", { fg = colors.line_number }, config)
@@ -274,7 +274,7 @@ function M.load()
 	highlight("@boolean", { fg = colors.yellow }, config)
 
 	highlight("@function", { fg = colors.blue }, config)
-	highlight("@function.builtin", { fg = colors.blue }, config)
+	highlight("@function.builtin", { fg = colors.yellow }, config)
 	highlight("@function.call", { fg = colors.blue }, config)
 	highlight("@function.macro", { fg = colors.blue }, config)
 
@@ -282,6 +282,7 @@ function M.load()
 	highlight("@function.method.call", { fg = colors.yellow }, config)
 
 	highlight("@constructor", { fg = colors.blue }, config)
+	highlight("@constructor.lua", { fg = colors.fg }, config)
 
 	highlight("@operator", {
 		fg = colors.fg,
@@ -291,7 +292,7 @@ function M.load()
 	highlight("@keyword", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.function", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.operator", { fg = colors.yellow, bold = true }, config)
-	highlight("@keyword.return", { fg = colors.yellow }, config)
+	highlight("@keyword.return", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.conditional", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.repeat", { fg = colors.yellow, bold = true }, config)
 	highlight("@keyword.import", { fg = colors.yellow, bold = true }, config)
@@ -322,6 +323,10 @@ function M.load()
 	highlight("@tag.delimiter", { fg = colors.fg }, config)
 
 	-- LSP highlights
+	-- lua
+	highlight("@lsp.type.function.lua", { fg = colors.yellow }, config)
+	highlight("@lsp.type.method.lua", { fg = colors.fg }, config)
+
 	highlight("LspReferenceText", { bg = colors.bg_lighter }, config)
 	highlight("LspReferenceRead", { bg = colors.bg_lighter }, config)
 	highlight("LspReferenceWrite", { bg = colors.bg_lighter }, config)
@@ -338,11 +343,11 @@ function M.load()
 	highlight("DiagnosticVirtualTextInfo", { fg = colors.info, bg = colors.bg }, config)
 	highlight("DiagnosticVirtualTextHint", { fg = colors.hint, bg = colors.bg }, config)
 
-	highlight("DiagnosticUnderlineError", { sp = colors.error, undercurl = true }, config)
-	highlight("DiagnosticUnderlineWarn", { sp = colors.warning, undercurl = true }, config)
-	highlight("DiagnosticUnderlineInfo", { sp = colors.info, undercurl = true }, config)
-	highlight("DiagnosticUnderlineHint", { sp = colors.hint, undercurl = true }, config)
-	highlight("DiagnosticUnnecessary", { fg = colors.blue_dark, sp = colors.warning, undercurl = true }, config)
+	highlight("DiagnosticUnderlineError", { sp = colors.error, underdotted = true }, config)
+	highlight("DiagnosticUnderlineWarn", { sp = colors.warning, underdotted = true }, config)
+	highlight("DiagnosticUnderlineInfo", { sp = colors.info, underdotted = true }, config)
+	highlight("DiagnosticUnderlineHint", { sp = colors.hint, underdotted = true }, config)
+	highlight("DiagnosticUnnecessary", { fg = colors.blue_dark, sp = colors.warning, underdotted = true }, config)
 
 	-- Notify
 	highlight("NotifyERRORBorder", { fg = colors.error }, config)
