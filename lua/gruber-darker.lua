@@ -97,7 +97,7 @@ local function highlight(group, opts, config_opts)
 	if opts.sp then
 		hl.sp = opts.sp
 	end
-	-- Handle styles as individual boolean keys (correct nvim_set_hl format)
+
 	if opts.bold and config_opts.bold then
 		hl.bold = true
 	end
@@ -234,7 +234,7 @@ function M.load()
 	highlight("Typedef", { fg = colors.blue }, config)
 
 	highlight("Special", { fg = colors.cyan }, config)
-	highlight("SpecialChar", { fg = colors.cyan }, config)
+	highlight("SpecialChar", { fg = colors.green }, config)
 	highlight("Tag", { fg = colors.cyan }, config)
 	highlight("Delimiter", { fg = colors.fg }, config)
 	highlight("SpecialComment", { fg = colors.fg_comment }, config)
@@ -247,12 +247,12 @@ function M.load()
 
 	-- Treesitter highlights
 	highlight("@variable", { fg = colors.fg }, config)
-	highlight("@variable.builtin", { fg = colors.blue }, config)
+	highlight("@variable.builtin", { fg = colors.yellow, bold = true }, config)
 	highlight("@variable.parameter", { fg = colors.fg }, config)
 	highlight("@variable.member", { fg = colors.fg }, config)
 
-	highlight("@constant", { fg = colors.cyan }, config)
-	highlight("@constant.builtin", { fg = colors.cyan }, config)
+	highlight("@constant", { fg = colors.fg }, config)
+	highlight("@constant.builtin", { fg = colors.yellow, bold = true }, config)
 	highlight("@constant.macro", { fg = colors.blue }, config)
 
 	highlight("@module", { fg = colors.cyan }, config)
@@ -262,7 +262,7 @@ function M.load()
 		fg = colors.green,
 		italic = config.italic.strings,
 	}, config)
-	highlight("@string.escape", { fg = colors.cyan }, config)
+	highlight("@string.escape", { fg = colors.yellow, bold = true }, config)
 	highlight("@string.regex", { fg = colors.cyan }, config)
 
 	highlight("@character", { fg = colors.green }, config)
@@ -271,15 +271,15 @@ function M.load()
 	highlight("@number", { fg = colors.purple }, config)
 	highlight("@number.float", { fg = colors.purple }, config)
 
-	highlight("@boolean", { fg = colors.yellow }, config)
+	highlight("@boolean", { fg = colors.yellow, bold = true }, config)
 
 	highlight("@function", { fg = colors.blue }, config)
-	highlight("@function.builtin", { fg = colors.yellow }, config)
+	highlight("@function.builtin", { fg = colors.yellow, bold = true }, config)
 	highlight("@function.call", { fg = colors.blue }, config)
 	highlight("@function.macro", { fg = colors.blue }, config)
 
 	highlight("@function.method", { fg = colors.blue }, config)
-	highlight("@function.method.call", { fg = colors.yellow }, config)
+	-- highlight("@function.method.call", { fg = colors.yellow }, config)
 
 	highlight("@constructor", { fg = colors.blue }, config)
 	highlight("@constructor.lua", { fg = colors.fg }, config)
@@ -299,8 +299,11 @@ function M.load()
 	highlight("@keyword.exception", { fg = colors.yellow }, config)
 
 	highlight("@type", { fg = colors.cyan }, config)
+	highlight("@type.parameter", { fg = colors.yellow }, config)
 	highlight("@type.builtin", { fg = colors.yellow }, config)
+	-- highlight("@type.builtin.typescript", { fg = colors.cyan }, config)
 	highlight("@type.qualifier", { fg = colors.yellow }, config)
+	highlight("@type.return", { fg = colors.yellow }, config)
 
 	highlight("@property", { fg = colors.fg }, config)
 	highlight("@attribute", { fg = colors.purple }, config)
@@ -322,10 +325,18 @@ function M.load()
 	highlight("@tag.attribute", { fg = colors.fg }, config)
 	highlight("@tag.delimiter", { fg = colors.fg }, config)
 
+	highlight("@php_tag", { fg = colors.purple }, config)
+
 	-- LSP highlights
+	-- highlight("@lsp.type.parameter", { fg = colors.yellow }, config)
+	-- highlight("@lsp.type.parameter", { fg = colors.yellow }, config)
+	-- highlight("@lsp.type.type", { fg = colors.yellow }, config)
+	-- - @lsp.type.enum.rust links to @type   priority: 125
 	-- lua
-	highlight("@lsp.type.function.lua", { fg = colors.yellow }, config)
-	highlight("@lsp.type.method.lua", { fg = colors.fg }, config)
+	-- highlight("@lsp.type.function.lua", { fg = colors.yellow }, config)
+	-- highlight("@lsp.type.method.lua", { fg = colors.fg }, config)
+	-- rust
+	-- highlight("@lsp.type.enum.rust", { fg = colors.yellow }, config)
 
 	highlight("LspReferenceText", { bg = colors.bg_lighter }, config)
 	highlight("LspReferenceRead", { bg = colors.bg_lighter }, config)
@@ -365,6 +376,12 @@ function M.load()
 	highlight("NotifyINFOTitle", { fg = colors.info }, config)
 	highlight("NotifyDEBUGTitle", { fg = colors.hint }, config)
 	highlight("NotifyTRACETitle", { fg = colors.purple }, config)
+
+	-- Mini.StatusLine
+	highlight("MiniStatuslineModeNormal", { bg = colors.yellow, fg = colors.bg, bold = true }, config)
+	highlight("MiniStatuslineModeVisual", { bg = colors.purple, fg = colors.bg, bold = true }, config)
+	highlight("MiniStatuslineModeCommand", { bg = colors.purple, fg = colors.bg, bold = true }, config)
+	-- highlight("MiniStatuslineFileinfo", { bg = colors.bg, fg = colors.fg }, config)
 end
 
 -- Convenience function for vim.cmd.colorscheme()
