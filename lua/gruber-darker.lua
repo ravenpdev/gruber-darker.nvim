@@ -10,7 +10,7 @@ local default_config = {
 		folds = false,
 	},
 	underline = true,
-	underdotted = true,
+	undercurl = true,
 	transparent = false,
 	inverse = true,
 	dim_inactive = false,
@@ -107,8 +107,8 @@ local function highlight(group, opts, config_opts)
 	if opts.underline and config_opts.underline then
 		hl.underline = true
 	end
-	if opts.underdotted and config_opts.underdotted then
-		hl.underdotted = true
+	if opts.undercurl and config_opts.undercurl then
+		hl.undercurl = true
 	end
 	if opts.reverse and config_opts.inverse then
 		hl.reverse = true
@@ -354,11 +354,11 @@ function M.load()
 	highlight("DiagnosticVirtualTextInfo", { fg = colors.info, bg = colors.bg }, config)
 	highlight("DiagnosticVirtualTextHint", { fg = colors.hint, bg = colors.bg }, config)
 
-	highlight("DiagnosticUnderlineError", { sp = colors.error, underdotted = true }, config)
-	highlight("DiagnosticUnderlineWarn", { sp = colors.warning, underdotted = true }, config)
-	highlight("DiagnosticUnderlineInfo", { sp = colors.info, underdotted = true }, config)
-	highlight("DiagnosticUnderlineHint", { sp = colors.hint, underdotted = true }, config)
-	highlight("DiagnosticUnnecessary", { fg = colors.blue_dark, sp = colors.warning, underdotted = true }, config)
+	highlight("DiagnosticUnderlineError", { fg = colors.error, sp = colors.error, undercurl = true }, config)
+	highlight("DiagnosticUnderlineWarn", { fg = colors.warning, sp = colors.warning, undercurl = true }, config)
+	highlight("DiagnosticUnderlineInfo", { fg = colors.info, sp = colors.info, undercurl = true }, config)
+	highlight("DiagnosticUnderlineHint", { fg = colors.hint, sp = colors.hint, undercurl = true }, config)
+	highlight("DiagnosticUnnecessary", { fg = colors.hint, sp = colors.hint, undercurl = true }, config)
 
 	-- Notify
 	highlight("NotifyERRORBorder", { fg = colors.error }, config)
